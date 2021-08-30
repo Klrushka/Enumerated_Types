@@ -38,12 +38,14 @@ public class VendingMachine {
     private static Input selection = null;
     private static EnumMap<WhereVendingMachine,VendingMachine> machineEnumMap = new EnumMap<>(WhereVendingMachine.class);
 
-    public VendingMachine(){
+    public static EnumMap<WhereVendingMachine, VendingMachine> getMachineEnumMap() {
+        return machineEnumMap;
     }
 
-    public VendingMachine(WhereVendingMachine where){
-        machineEnumMap.put(where,new VendingMachine());
+    public static void setMachineEnumMap(WhereVendingMachine whereVendingMachine) {
+        machineEnumMap.put(whereVendingMachine,new VendingMachine());
     }
+
     enum StateDuration {TRANSIENT} // Tagging enum
 
     enum State {

@@ -38,6 +38,7 @@ public class Main {
             printNext();
         }
 
+        System.out.println("\n");
 
         /*
         Exercise 10: (7) Modify class VendingMachine (only) using EnumMap so that one
@@ -47,11 +48,12 @@ public class Main {
         try {
             Properties properties = new Properties();
             properties.load(new FileReader("src\\config.properties"));
-            VendingMachine vendingMachine0 = new VendingMachine(WhereVendingMachine.HOTEL);
-            VendingMachine vendingMachine1 = new VendingMachine(WhereVendingMachine.AIRPORT);
+            VendingMachine.setMachineEnumMap(WhereVendingMachine.AIRPORT);
+            VendingMachine.setMachineEnumMap(WhereVendingMachine.HOTEL);
 
-            vendingMachine0.start(properties.getProperty("0"));
-            vendingMachine1.start(properties.getProperty("1"));
+
+            VendingMachine.getMachineEnumMap().get(WhereVendingMachine.HOTEL).start(properties.getProperty("0"));
+            VendingMachine.getMachineEnumMap().get(WhereVendingMachine.HOTEL).start(properties.getProperty("1"));
         } catch (IOException e) {
             e.printStackTrace();
         }
