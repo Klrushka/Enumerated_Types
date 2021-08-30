@@ -40,7 +40,7 @@ public class Main {
         program can have multiple instances of VendingMachine.
 
 
-        I copied from a book and got an infinite loop, I can't understand why
+
          */
 
 

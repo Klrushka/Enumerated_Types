@@ -2,7 +2,7 @@ package task3;
 
 import java.util.Random;
 
-enum Input {
+public enum Input {
     NICKEL(5), DIME(10), QUARTER(25), DOLLAR(100),
     TOOTHPASTE(200), CHIPS(75), SODA(100), SOAP(50),
     ABORT_TRANSACTION {
@@ -25,11 +25,11 @@ enum Input {
     Input() {
     }
 
-    int amount() {
+    public int amount() {
         return value;
     }
 
-    ; // In cents
+     // In cents
     static Random rand = new Random(47);
 
     public static Input randomSelection() {
