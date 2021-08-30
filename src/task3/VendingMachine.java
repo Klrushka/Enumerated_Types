@@ -17,6 +17,7 @@ enum Category {
         values = types;
     }
 
+
     private static EnumMap<Input, Category> categories =
             new EnumMap<Input, Category>(Input.class);
 
@@ -35,7 +36,14 @@ public class VendingMachine {
     private static State state = State.RESTING;
     private static int amount = 0;
     private static Input selection = null;
+    private static EnumMap<WhereVendingMachine,VendingMachine> machineEnumMap = new EnumMap<>(WhereVendingMachine.class);
 
+    public VendingMachine(){
+    }
+
+    public VendingMachine(WhereVendingMachine where){
+        machineEnumMap.put(where,new VendingMachine());
+    }
     enum StateDuration {TRANSIENT} // Tagging enum
 
     enum State {
@@ -127,8 +135,8 @@ public class VendingMachine {
         }
     }
 
-    public static void main(String[] args) {
-        Generator<Input> gen = new FileInputGenerator(args[0]);
+    public void start(String path) {
+        Generator<Input> gen = new FileInputGenerator(path);
         run(gen);
     }
 }

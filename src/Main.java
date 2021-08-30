@@ -1,6 +1,10 @@
 import task1.TrafficLight;
 import task3.*;
 
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
+
 import static task2.EnumImplementation.printNext;
 
 public class Main {
@@ -38,10 +42,21 @@ public class Main {
         /*
         Exercise 10: (7) Modify class VendingMachine (only) using EnumMap so that one
         program can have multiple instances of VendingMachine.
-
-
-
          */
+
+        try {
+            Properties properties = new Properties();
+            properties.load(new FileReader("src\\config.properties"));
+            VendingMachine vendingMachine0 = new VendingMachine(WhereVendingMachine.HOTEL);
+            VendingMachine vendingMachine1 = new VendingMachine(WhereVendingMachine.AIRPORT);
+
+            vendingMachine0.start(properties.getProperty("0"));
+            vendingMachine1.start(properties.getProperty("1"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
 
 
 
